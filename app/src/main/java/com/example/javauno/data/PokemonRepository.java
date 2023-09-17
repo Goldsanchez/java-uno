@@ -15,15 +15,16 @@ import retrofit2.Response;
 
 public class PokemonRepository {
 
-    private PokemonService pokemonService;
+    private final PokemonService pokemonService;
 
     Random random = new Random();
 
     @Inject
     public PokemonRepository(PokemonService pokemonService){
-
+        this.pokemonService = pokemonService;
     }
 
+        // https://pokeapi.co/api/v2/pokemon/3
     PokemonDto getPokemons(){
         int randomNumber = random.nextInt(100);
         Response<PokemonDto> response = pokemonService.getPokemons(Integer.toString(randomNumber));
